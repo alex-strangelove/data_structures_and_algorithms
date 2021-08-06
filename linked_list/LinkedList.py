@@ -62,7 +62,7 @@ class LinkedList(object):
 
     # Remove node from linked list:
     def remove_node(self, data):
-        current_node = self.value
+        current_node = self.head_node
         prev_node = None
 
         while current_node:
@@ -80,7 +80,7 @@ class LinkedList(object):
 
     # Find a node:
     def find_node(self, data):
-        current_node = self.value
+        current_node = self.head_node
 
         while current_node:
             if current_node.get_data() == data:
@@ -115,7 +115,11 @@ def list_debug():
     print(my_list.print_list())
 
     # Remove value:
-    
+    my_list.remove_node("Node 1")
+
+    # Print list of nodes after removing:
+    print("\n***DEBUG*** ---Prints list of nodes after removing:\n")
+    print(my_list.print_list())
 
     # Prints head(root) node:
     print("\n***DEBUG*** ---Prints the root head node:\n")
@@ -161,9 +165,20 @@ def user_list():
             input("Hit any key to continue...")
             user_list()
 
+    elif usr_in == '3':
+        print(my_list1.get_size_str())
+        input("Hit any key to continue...")
+        user_list()
+
     elif usr_in == '4':
-        print("Print known nodes:")
+        print("List of known nodes:")
         print(my_list1.print_list())
+        input("Hit any key to continue...")
+        user_list()
+    
+    elif usr_in == '5':
+        usr_in = input("Please enter node to find: ")
+        print(my_list1.find_node(usr_in))
         input("Hit any key to continue...")
         user_list()
 
@@ -174,14 +189,15 @@ def user_list():
 
     else:
         print("Please enter the correct value!")
+        input("Hit any key to and try again...")
         user_list()
 
 
 
 # Functional Test:
 def main():
-    list_debug() # -- Optional: you can uncomment this row for debugging
-    # user_list()
+    # list_debug() # -- Optional: you can uncomment this row for debugging
+    user_list()
 
 main()
 
