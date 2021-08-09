@@ -58,6 +58,7 @@ class LinkedList(object):
         new_node.set_next_node(self.head_node)
         self.head_node = new_node
         self.size += 1
+    
 
 
     # Remove node from linked list:
@@ -66,17 +67,23 @@ class LinkedList(object):
         prev_node = None
 
         while current_node:
-            if current_node.get_data() == data:
-                if prev_node: # Removing node that is not the value
-                    prev_node.set_next_node(current_node.get_next_node())
-                else: # Removing value node
-                    self.value = current_node.get_next()
-                self.size -= 1
-                return True # Data has been removed
-            else:
-                prev_node = current_node
-                current_node = current_node.get_next_node()
-        return False # Data not found
+            try:
+                if current_node.get_data() == data:
+                    if prev_node: # Removing node that is not the value
+                        prev_node.set_next_node(current_node.get_next_node())
+                    else: # Removing value node
+                        self.value = current_node.get_next()
+                    self.size -= 1
+                    return True # Data has been removed
+                else:
+                    prev_node = current_node
+                    current_node = current_node.get_next_node()
+                return False # Data not found
+            except AttributeError:
+                print('Alarm>>>Red_alarmm...pc_going_to_be_crash...>>>Total[======]....panic!')
+                input = ('Press any key to return!\ndata could be lost')
+                return False
+
 
     # Find a node:
     def find_node(self, data):
