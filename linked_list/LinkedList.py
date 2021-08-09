@@ -1,5 +1,6 @@
 # Create Node object:
 class Node(object):
+    
 
     def __init__(self, data, next_node=None):
         self.data = data
@@ -65,24 +66,19 @@ class LinkedList(object):
     def remove_node(self, data):
         current_node = self.head_node
         prev_node = None
-
         while current_node:
-            try:
-                if current_node.get_data() == data:
-                    if prev_node: # Removing node that is not the value
-                        prev_node.set_next_node(current_node.get_next_node())
-                    else: # Removing value node
-                        self.value = current_node.get_next()
+            if current_node.get_data() == data:
+                if prev_node: # Removing node that is not the value
+                    prev_node.set_next_node(current_node.get_next_node())
+                else: # Removing value node
+                    self.head_node = current_node.get_next_node()
                     self.size -= 1
                     return True # Data has been removed
-                else:
-                    prev_node = current_node
-                    current_node = current_node.get_next_node()
+            else:
+                prev_node = current_node
+                current_node = current_node.get_next_node()
                 return False # Data not found
-            except AttributeError:
-                print('Alarm>>>Red_alarmm...pc_going_to_be_crash...>>>Total[======]....panic!')
-                input = ('Press any key to return!\ndata could be lost')
-                return False
+            return False
 
 
     # Find a node:
@@ -151,7 +147,7 @@ def user_list():
     6.Exit programm 
     """)
     usr_in = input("Please enter the number of operation: ")
-    print()
+    
 
     if usr_in == '1':
         print("You're going to add a new node")
