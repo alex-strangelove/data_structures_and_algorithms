@@ -87,7 +87,8 @@ def main():
               """)
         usr_in = input('Please enter number of next step: ')
         if usr_in == '1':
-            pass
+            conn.close()
+            main()
         elif usr_in == '2':
             print('Please enter value to database')
             usr_in = input('Value: ')
@@ -96,11 +97,25 @@ def main():
             input('DB updated!\npress enter to continue...')
             main()
         elif usr_in == '3':
-            pass
+            try:
+                print('Known values: ')
+                print_table_all(conn)
+                input('Press enter to continue...')
+                usr_in = input('Please enter value to delete: ')
+                delete_task(conn, usr_in)
+                conn.close()
+                input('Press enter to continue...')
+            except Exception:
+                input('Fatal exception\nRestart!...\nPress enter to continue...')
+                main()
         elif usr_in == '4':
-            pass
+            delete_all_tasks(conn)
+            input('All data has been removed!\nPress enter to continue...')
+            conn.close()
+            main()
         elif usr_in == '5':
             print_table_all(conn)
+            conn.close()
             input('Press enter to continue...')
             main()
         elif usr_in == '6':
