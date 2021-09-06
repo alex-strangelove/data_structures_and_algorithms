@@ -23,6 +23,9 @@ def to_decimal(bin_num, trace):
 
 
 def main():
+    # print(f"52345 = {bin(52345)} in binary.\n\n")
+    # print(f"1100110001111001 = {int(0b1100110001111001)} in decimal.")
+
     bin_num = '1111011110011'
     trace = True
 
