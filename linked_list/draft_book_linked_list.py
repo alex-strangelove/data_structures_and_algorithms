@@ -28,24 +28,34 @@ class LinkedList:
         new_node = Node(new_value, current_node)
         self.set_head_node(new_node)
 
-    def print_list(self):
+    def nodes_list(self):
         list = ""
         head_node = self.get_head_node() # 40
-
         while head_node:
             if head_node.get_value() != None:
                 list += str(head_node.get_value()) + "\n"
             head_node = head_node.get_next_node()
-        print(list[::-1])
+        return list
+    
+    def remove_node(self, value_to_rm):
+        current_node = self.get_head_node()
+        while current_node:
+            if current_node.get_value() ==  value_to_rm:
+                self.head_node = current_node.get_next_node()
+            current_node = current_node.get_next_node()
+
 
 ll = LinkedList(10)
 ll.insert_beginning(20)
 ll.insert_beginning(30)
 ll.insert_beginning(40)
 
-ll.print_list()
+print(ll.nodes_list())
 
+ll.remove_node(40)
     
+print(ll.nodes_list())
+
 # node_one = Node(1)
 # node_two = Node(2)
 # node_tree = Node(3)
